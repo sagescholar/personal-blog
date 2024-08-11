@@ -28,7 +28,7 @@ export default function BlogPosts() {
           <h2 className="text-xl font-semibold">{post.title}</h2>
           <p className="text-gray-500">{new Date(post.created_at).toLocaleDateString()}</p>
           <Link href={`/posts/${post.id}`}>
-            <a className="text-blue-500 hover:underline">Read more</a>
+            <span className="text-blue-500 hover:underline">Read more</span>
           </Link>
         </div>
       ))}

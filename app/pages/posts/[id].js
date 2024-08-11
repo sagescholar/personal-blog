@@ -1,4 +1,4 @@
-import PostContent from '../../../components/PostContent'
+import PostContent from '../../components/PostContent'
 
 export default function Post({ params }) {
   return (
