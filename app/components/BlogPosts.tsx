@@ -1,11 +1,20 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase } from '../../lib/supabase'
 import Link from 'next/link'
 
+// 投稿の型を定義
+type Post = {
+  id: number
+  title: string
+  content: string
+  created_at: string
+}
+
 export default function BlogPosts() {
-  const [posts, setPosts] = useState([])
+  // 明示的に Post[] 型を指定
+  const [posts, setPosts] = useState<Post[]>([])
 
   useEffect(() => {
     fetchPosts()
@@ -18,7 +27,7 @@ export default function BlogPosts() {
       .order('created_at', { ascending: false })
     
     if (error) console.log('error', error)
-    else setPosts(data)
+    else setPosts(data as Post[])  // 明示的に Post[] として型アサーション
   }
 
   return (

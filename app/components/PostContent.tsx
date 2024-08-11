@@ -1,10 +1,17 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase } from '../../lib/supabase'
 
-export default function PostContent({ id }) {
-  const [post, setPost] = useState(null)
+type Post = {
+  id: number
+  title: string
+  content: string
+  created_at: string
+}
+
+export default function PostContent({ id }: { id: string }) {
+  const [post, setPost] = useState<Post | null>(null)
 
   useEffect(() => {
     fetchPost()
@@ -18,7 +25,7 @@ export default function PostContent({ id }) {
       .single()
     
     if (error) console.log('error', error)
-    else setPost(data)
+    else setPost(data as Post)
   }
 
   if (!post) return <div>Loading...</div>
