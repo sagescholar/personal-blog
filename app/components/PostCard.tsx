@@ -1,6 +1,15 @@
 import Link from 'next/link'
 
-export default function PostCard({ post }) {
+// Post型の定義
+type Post = {
+  id: number;
+  title: string;
+  content: string;
+  created_at: string;
+}
+
+// propsの型を明示的に指定
+export default function PostCard({ post }: { post: Post }) {
   return (
     <Link href={`/posts/${post.id}`} className="block">
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
